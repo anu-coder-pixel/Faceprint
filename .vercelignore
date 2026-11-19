@@ -1,0 +1,23 @@
+# Virtual environment
+.venv/
+venv/
+
+# Tests and synthetic datasets
+test_*.py
+Faceprint_Test_Dataset/
+dataset/
+results/
+
+# Python caches
+__pycache__/
+*.pyc
+
+# Local databases
+database/*.npz
+database/*_backup.npz
+*.npz
+
+# Git & IDE
+.git/
+.idea/
+.vscode/
