@@ -1,23 +1,15 @@
-# Virtual environment
-.venv/
-venv/
-
-# Tests and synthetic datasets
+# Exclude local desktop app and synthetic datasets from Vercel Serverless Function bundle
+app.py
 test_*.py
 Faceprint_Test_Dataset/
 dataset/
 results/
-
-# Python caches
+database/
+models/face_recognition_sface.onnx
+.venv/
+venv/
 __pycache__/
 *.pyc
-
-# Local databases
-database/*.npz
-database/*_backup.npz
-*.npz
-
-# Git & IDE
 .git/
 .idea/
 .vscode/

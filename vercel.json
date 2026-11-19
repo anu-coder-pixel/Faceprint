@@ -1,8 +1,9 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
   "functions": {
     "api/**/*.py": {
-      "includeFiles": "models/**",
-      "excludeFiles": "Faceprint_Test_Dataset/**|test_*.py"
+      "includeFiles": "models/face_detection_yunet.onnx"
     }
   },
   "rewrites": [
