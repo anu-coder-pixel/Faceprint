@@ -1238,3 +1238,10 @@ if __name__ == "__main__":
         inbrowser=True,
         css=CUSTOM_CSS,
     )
+
+# Expose FastAPI application instance for ASGI / Vercel Serverless compatibility
+try:
+    from api.detect import app as app
+except Exception:
+    app = None
+
