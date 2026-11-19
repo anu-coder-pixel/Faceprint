@@ -35,8 +35,21 @@ def get_detector() -> FaceDetector:
     """Lazy loader for the FaceDetector model."""
     global _detector
     if _detector is None:
-        model_path = os.path.join(ROOT, "models", "face_detection_yunet.onnx")
-        _detector = FaceDetector(model_path=model_path, score_threshold=0.5)
+        candidates = [
+            os.path.join(ROOT, "models", "face_detection_yunet.onnx"),
+            os.path.join(os.getcwd(), "models", "face_detection_yunet.onnx"),
+            os.path.abspath("models/face_detection_yunet.onnx"),
+            os.path.join(os.path.dirname(__file__), "..", "models", "face_detection_yunet.onnx"),
+            "/var/task/models/face_detection_yunet.onnx",
+        ]
+        chosen_path = None
+        for p in candidates:
+            if os.path.isfile(p):
+                chosen_path = p
+                break
+        if chosen_path is None:
+            chosen_path = candidates[0]
+        _detector = FaceDetector(model_path=chosen_path, score_threshold=0.5)
     return _detector
 
 
@@ -297,7 +310,7 @@ async def detect(payload: ImagePayload):
 
     try:
         detector = get_detector()
-        faces = detector.detect(img_bgr)
+        faces = detector.detect_faces(img_bgr)
         results = []
         if faces is not None and len(faces) > 0:
             for face in faces:

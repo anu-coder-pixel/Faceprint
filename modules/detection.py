@@ -234,6 +234,14 @@ class FaceDetector:
         order = np.argsort(-filtered[:, 14])
         return filtered[order]
 
+    def detect(
+        self,
+        image: np.ndarray,
+        score_threshold: Optional[float] = None,
+    ) -> Optional[np.ndarray]:
+        """Convenience alias for detect_faces."""
+        return self.detect_faces(image, score_threshold=score_threshold)
+
     def detect_faces(
         self,
         image: np.ndarray,
