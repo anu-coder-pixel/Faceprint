@@ -1,0 +1,50 @@
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python byte-code and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+
+# Environment files and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local database files and biometric vectors
+database/*.npz
+database/*_backup.npz
+face_database.npz
+face_database_backup.npz
+*.npz
+!database/.gitkeep
+
+# Generated test and benchmark outputs
+results/
+results/*
+!results/.gitkeep
+
+# Private / personal test datasets
+dataset/
+dataset/*
+
+# IDE and editor configurations
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
